@@ -1,0 +1,26 @@
+:root {
+  --primary: #b4b4e0;
+  --primary-010: #c7c7e8;
+  --border-color: #dadaf0;
+
+  --light: #ececf7;
+  --light-010: #f2f2f5;
+  --light-020: #e3e3e7;
+
+  --dark: #101622;
+}
+
+body.dark {
+    --primary: #9a9ae6;
+    --primary-010: #7f82da;
+    --border-color: #34365c;
+
+    /* superfícies */
+    --light: #141629;        /* fundo principal */
+    --light-010: #1b1e36;    /* cards / sidebar */
+    --light-020: #24274a;    /* hover / detalhes */
+
+    /* texto */
+    --dark: #f1f2ff;
+    --dark-010: #c8cae6;
+}

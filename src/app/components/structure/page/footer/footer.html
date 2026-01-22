@@ -1,0 +1,14 @@
+<hr>
+
+<section class="container" [class.active]="open">
+  <div class="text-reset">
+      <h4>Limpar lista de tarefas</h4>
+  </div>
+
+  <div class="button-reset">
+      <button class="btn" (click)="onClick()"></button>
+  </div>
+  <div>
+    <h2>{{data() | date : 'dd/MM/yyyy hh-mm-ss'}}</h2>
+  </div>
+</section>

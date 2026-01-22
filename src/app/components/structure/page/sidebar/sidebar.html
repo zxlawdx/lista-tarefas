@@ -1,0 +1,17 @@
+<div class="layout">
+    <aside class="sidebar" [class.closed]="!isOpen()">
+        <h2>Menu</h2>
+        <div class="menu-item">
+            <div class="input-item">
+                <p>Tema</p>
+            </div>
+            <div class="input-radio">
+                <label class="switch">
+                <input type="checkbox" (change)="toggleTheme($event.target.checked)" />
+                <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </aside>
+
+</div>

@@ -1,0 +1,224 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para não sumir conteúdo em telas pequenas */
+    min-height: 100vh;
+    background: var(--light);
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+/* Garante que o box-sizing se aplique a tudo */
+* {
+    box-sizing: border-box;
+}
+
+.page {
+    width: 95%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 24px;
+    background: var(--light-010);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 { margin-bottom: 8px; color: var(--dark);}
+h2 { font-size: 15px; font-weight: 200; color: var(--dark); }
+
+h1, h2{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ÁREA DE INPUT */
+.wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end; /* Alinha o botão com a base dos inputs */
+    margin-bottom: 32px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ocupa o espaço restante */
+    gap: 10px;
+}
+
+.input-nome-tarefa,
+.input-conteudo-tarefa {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-nome-tarefa:focus, .input-conteudo-tarefa:focus {
+    border-color: #2b6cee;
+    box-shadow: 0 0 0 3px rgba(43, 108, 238, 0.15);
+}
+
+.add {
+    width: 50px;
+    height: 50px;
+    background-color: #2b6cee;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    mask: url("/icon-button/page/add.svg") no-repeat center / contain;
+    -webkit-mask: url("/icon-button/page/add.svg") no-repeat center / contain;
+}
+
+/* LISTA DE TAREFAS */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tarefa-item {
+    display: flex;
+    align-items: center; /* Alinha checkbox com o topo do details */
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+details {
+    flex: 1; /* Faz o details ocupar todo o espaço lateral */
+    background: var(--light-020);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    cursor: pointer;
+    list-style: none;
+    background: var(--primary-010);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+}
+
+summary::-webkit-details-marker { display: none; } /* Remove seta padrão */
+
+summary::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: var(--dark);
+    mask: url('/icon-button/page/chevron-down.svg') no-repeat center / contain;
+    -webkit-mask: url('/icon-button/page/chevron-down.svg') no-repeat center / contain;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+article {
+    padding: 16px 20px;
+    background: #fff;
+    border-top: 1px solid var(--dark-010);
+}
+
+.checkbox {
+    width: 25px;
+    height: 25px; /* Tamanho ajustado para ser um círculo real */
+    cursor: pointer;
+    accent-color: #2b6cee;
+    margin-top: 12px; /* Alinha com o texto do summary */
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+}
+
+/* Esconde o checkbox real */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Trilho */
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão + ícone */
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  bottom: 3px;
+
+  background-color: #000000;
+  border-radius: 50%;
+
+
+  transition: transform 0.3s ease, mask 0.3s ease;
+}
+
+/* Estado ativo */
+.switch input:checked + .slider {
+  background-color: #2b6cee;
+  
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+  background-color: #ffffff;
+}
+
+.slider {
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.slider::before {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.delete-item{
+    width: 30px;
+    height: 70px;
+    background: var(--dark);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    mask: url("/icon-button/footer/delete.svg") no-repeat center / contain;
+    -webkit-mask: url("/icon-button/footer/delete.svg") no-repeat center / contain;
+}
+
+/* RESPONSIVIDADE (MOBILE) */
+@media (max-width: 768px) {
+    .page {
+        margin: 10px;
+        padding: 16px;
+    }
+
+    .wrapper {
+        flex-direction: column; /* Botão vai para baixo dos inputs */
+        align-items: center;
+    }
+
+    .add {
+        width: 50px; /* Botão largo no mobile para facilitar o toque */
+    }
+}

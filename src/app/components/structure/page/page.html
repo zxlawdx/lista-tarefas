@@ -1,0 +1,62 @@
+<main class="page">
+    <h1>Minha Lista de Tarefas</h1>
+    <h2>Organize suas tarefas diárias</h2>
+
+  <div class="wrapper">
+   <div class="input-wrapper">
+    <input 
+      #tarefaInputName class="input-nome-tarefa" placeholder="Título da tarefa">
+    <input #tarefaInputContent class="input-conteudo-tarefa" placeholder="Descrição da tarefa">
+
+    </div>
+    <div class="button-wrapper">
+       <button
+        class="add"
+        (click)="novaTarefa(tarefaInputContent.value, tarefaInputName.value);
+          tarefaInputName.value = '';
+          tarefaInputContent.value = '';"
+        
+        >
+      </button>
+    </div>
+  </div>
+
+
+   <div>
+      <ul>
+        @for (item of tarefas(); track item) {
+         <li class="tarefa-item">
+           <details>
+            
+            <summary>
+              <p>{{item.name}}</p>
+            </summary>
+            <article>
+              <p>Detalhes: {{item.content}}</p>
+              <button class="delete-item" (click)="deleteItemFromArray(item)"></button>
+            </article>
+          </details>
+
+          <div class="check-item"> 
+            <label class="switch">
+            <input
+            #check
+            type="checkbox"
+            [checked]="item.isConclused"
+            (change)="toggle(item, $event)"
+            class="checkbox">
+            <span class="slider"></span>
+            </label>
+          </div>
+          </li>
+        }
+      </ul>
+   </div>
+   <footer>
+    <app-footer
+    [open]="toogleDelete"
+    (toggleDelete)="OnToogleDelete()"
+  />
+
+   </footer>
+</main> 

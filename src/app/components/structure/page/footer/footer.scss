@@ -1,0 +1,31 @@
+
+:host{
+
+    .text-reset{
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* Ocupa o espaço restante */
+        gap: 10px;
+    }
+    h2{
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .btn{
+        width: 40px;
+        height: 60px;
+        background: var(--dark);
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+        mask: url("/icon-button/footer/delete.svg") no-repeat center / contain;
+        -webkit-mask: url("/icon-button/footer/delete.svg") no-repeat center / contain;
+    }
+    .container{
+        display: flex;
+        align-items: flex-start; /* Alinha checkbox com o topo do details */
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+}
